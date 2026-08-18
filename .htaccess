@@ -1,0 +1,3 @@
+# キャッシュを毎回確認するようにする
+Header set Cache-control no-cache
+
