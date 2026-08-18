@@ -1,0 +1,372 @@
+:root{
+  --line:#b5b5b5;
+  --line-strong:#8a8a8a;
+  --box:#e4e4e4;
+  --box2:#efefef;
+  --box3:#f7f7f7;
+  --ink:#4a4a4a;
+  --ink-lt:#8c8c8c;
+  --accent:#3d5a7a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  background:#f2f3f5;color:var(--ink);font-size:14px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- ツールバー ---------- */
+.toolbar{
+  position:sticky;top:0;z-index:100;background:#22303f;color:#fff;
+  padding:10px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.toolbar .ttl{font-weight:700;font-size:14px;letter-spacing:.04em}
+.toolbar .ttl small{display:block;font-weight:400;font-size:11px;opacity:.7;letter-spacing:0}
+.toolbar .sp{flex:1}
+.pagenav{display:flex;gap:4px}
+.pagenav a{
+  color:#fff;text-decoration:none;font-size:12px;padding:5px 13px;border-radius:3px;
+  border:1px solid rgba(255,255,255,.28);opacity:.8;
+}
+.pagenav a:hover{opacity:1;background:rgba(255,255,255,.1)}
+.pagenav a.on{background:#fff;color:#22303f;font-weight:700;opacity:1;border-color:#fff}
+.tgroup{display:flex;gap:0;border:1px solid rgba(255,255,255,.35);border-radius:4px;overflow:hidden}
+.tgroup button{
+  background:transparent;border:0;color:#fff;padding:6px 16px;cursor:pointer;
+  font-size:12px;font-family:inherit;
+}
+.tgroup button.on{background:#fff;color:#22303f;font-weight:700}
+.chk{display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;user-select:none}
+
+/* ---------- レイアウト ---------- */
+.stage{padding:36px 20px 80px}
+.canvas{margin:0 auto;width:1000px;position:relative}
+.wire{
+  width:1000px;background:#fff;border:1px solid var(--line-strong);
+  margin:0;position:relative;
+}
+body.sp .canvas{width:375px}
+body.sp .wire{width:375px}
+
+/* ブロック番号 */
+.sec{position:relative}
+.num{
+  position:absolute;left:-30px;top:6px;width:22px;height:22px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ---------- ワイヤー部品 ---------- */
+.inner{width:860px;margin:0 auto}
+body.sp .inner{width:335px}
+.ph{
+  background:var(--box);border:1px dashed var(--line-strong);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  color:#6f6f6f;font-size:12px;padding:8px;position:relative;
+}
+.ph::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to top right,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),
+    linear-gradient(to top left ,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px));
+  opacity:.5;
+}
+.ph span{position:relative;z-index:1;background:rgba(255,255,255,.75);padding:2px 8px;border-radius:2px}
+.lbl{font-size:11px;color:var(--ink-lt);letter-spacing:.06em}
+.bar{background:var(--box2);height:12px;border-radius:2px}
+.bar.s{width:60%}.bar.m{width:80%}
+.btn{
+  border:1px solid var(--line-strong);background:var(--box2);
+  padding:9px 18px;font-size:12px;text-align:center;display:inline-block;
+}
+.btn.fill{background:#5c5c5c;color:#fff;border-color:#5c5c5c}
+.h2{
+  text-align:center;font-size:20px;letter-spacing:.16em;font-weight:700;color:#3c3c3c;
+  padding-bottom:10px;position:relative;margin-bottom:24px;
+}
+.h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:56px;height:3px;background:#6f6f6f}
+.h2 em{display:block;font-style:normal;font-size:11px;letter-spacing:.08em;color:var(--ink-lt);margin-top:4px}
+.pad{padding:52px 0}
+.pad-s{padding:34px 0}
+body.sp .pad{padding:36px 0}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.g4{grid-template-columns:repeat(4,1fr)}
+body.sp .g3,body.sp .g4{grid-template-columns:1fr 1fr}
+body.sp .g2{grid-template-columns:1fr}
+.center{text-align:center}
+
+/* ヘッダー */
+.hd{border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:18px}
+.hd .logo{width:150px;height:40px;flex:none}
+.hd nav{margin-left:auto;display:flex;gap:22px;font-size:12.5px;align-items:center}
+.hd nav i{font-style:normal;position:relative}
+.hd nav i.cur{font-weight:700;color:#22303f}
+.hd nav i.dd::after{content:"▾";font-size:10px;margin-left:3px;color:var(--ink-lt)}
+.hd .tel{font-size:11px;color:var(--ink-lt);text-align:right;line-height:1.3}
+.hd .tel b{display:block;font-size:16px;color:#3c3c3c;letter-spacing:.02em}
+.burger{margin-left:auto;width:28px;height:22px;display:none;flex-direction:column;justify-content:space-between}
+.burger span{display:block;height:3px;background:#666}
+body.sp .hd nav,body.sp .hd .tel{display:none}
+body.sp .burger{display:flex}
+body.sp .hd .logo{width:120px;height:34px}
+
+/* ハンバーガーメニュー（スマートフォン） */
+.burger{cursor:pointer}
+.drawer{
+  display:none;position:absolute;top:0;left:0;right:0;height:667px;z-index:20;
+  background:#fff;border-bottom:2px solid var(--line-strong);overflow-y:auto;
+  box-shadow:0 6px 18px rgba(0,0,0,.14);
+}
+body.sp .drawer.open{display:block}
+.dhead{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;
+}
+.dhead .logo{width:120px;height:34px;flex:none}
+.dclose{
+  width:34px;height:34px;border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;font-size:18px;color:#666;cursor:pointer;
+}
+.ditem{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 16px;border-bottom:1px solid #ececec;font-size:13.5px;font-weight:700;
+  text-decoration:none;color:var(--ink);
+}
+.ditem.acc{cursor:pointer}
+.ditem i{font-style:normal;font-size:15px;color:#999;font-weight:400}
+.dsub{display:none;background:var(--box3);border-bottom:1px solid #ececec}
+.dacc.open .dsub{display:block}
+.dacc.open .ditem i{transform:rotate(45deg)}
+.dsub a{
+  display:block;padding:11px 16px 11px 30px;font-size:12px;color:#5a5a5a;
+  text-decoration:none;border-bottom:1px solid #e6e6e6;
+}
+.dsub a:last-child{border-bottom:0}
+.dtel{padding:22px 16px;background:var(--box3);text-align:center;border-bottom:1px solid #ececec}
+.dtel .cap{font-size:11px;color:var(--ink-lt);margin-bottom:10px}
+.dtel .row{margin-bottom:10px}
+.dtel .row b{display:block;font-size:19px;letter-spacing:.02em;color:#3c3c3c}
+.dtel .row span{font-size:10.5px;color:var(--ink-lt)}
+.dtel .hours{font-size:10.5px;color:var(--ink-lt);margin-top:6px}
+.dbtn{margin:18px 16px 26px;background:#5c5c5c;color:#fff;text-align:center;padding:14px 0;font-size:13px}
+
+/* カテゴリバー */
+.catbar{display:flex;flex-wrap:wrap;background:var(--box3)}
+.catbar div{
+  flex:0 0 25%;text-align:center;padding:11px 6px;font-size:11px;line-height:1.4;
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:#5a5a5a;
+  display:flex;align-items:center;justify-content:center;min-height:42px;
+}
+.catbar div:nth-child(4n){border-right:0}
+body.sp .catbar div{flex:0 0 50%;border-right:1px solid var(--line);font-size:10.5px}
+body.sp .catbar div:nth-child(2n){border-right:0}
+
+/* ヒーロー */
+.hero{height:420px;position:relative}
+body.sp .hero{height:230px}
+
+/* お知らせ */
+.news{list-style:none}
+.news li{display:flex;gap:16px;align-items:center;padding:13px 4px;border-bottom:1px solid #e6e6e6;font-size:12.5px}
+.news li:first-child{border-top:1px solid #e6e6e6}
+.news .date{width:98px;flex:none;color:var(--ink-lt);font-size:12px}
+.news .tag{flex:none;border:1px solid var(--line-strong);background:var(--box2);font-size:10px;padding:1px 8px;border-radius:10px}
+body.sp .news li{flex-wrap:wrap;gap:6px}
+body.sp .news .date{width:auto}
+body.sp .news .ttl{flex:0 0 100%}
+
+/* 下層ページ見出し */
+.phead{background:var(--box2);border-bottom:1px solid var(--line);padding:34px 0;text-align:center}
+body.sp .phead{padding:24px 0}
+.phead h1{font-size:24px;letter-spacing:.14em;font-weight:700;color:#3c3c3c}
+body.sp .phead h1{font-size:19px}
+.phead .en{font-size:11px;letter-spacing:.1em;color:var(--ink-lt);margin-top:4px}
+.crumb{font-size:11px;color:var(--ink-lt);padding:10px 24px;border-bottom:1px solid #ececec}
+
+/* 絞り込み検索 */
+.filter{background:#e0e0e0;padding:22px 0}
+.filter .row{display:flex;gap:12px;align-items:stretch}
+body.sp .filter .row{flex-wrap:wrap;gap:8px}
+.sel{
+  flex:1;background:#fff;border:1px solid var(--line-strong);padding:11px 14px;
+  font-size:12px;color:#777;display:flex;align-items:center;justify-content:space-between;
+}
+.sel::after{content:"▾";color:#888;font-size:11px}
+.inp{flex:1;background:#fff;border:1px solid var(--line-strong);padding:11px 14px;font-size:12px;color:#aaa}
+.filter .go{
+  flex:0 0 130px;background:#5c5c5c;color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:13px;letter-spacing:.2em;
+}
+body.sp .filter .sel,body.sp .filter .inp{flex:0 0 100%}
+body.sp .filter .go{flex:0 0 100%;padding:12px 0}
+.filter .cap{display:block;font-size:12.5px;font-weight:700;color:#3c3c3c;margin-bottom:8px}
+.filter .inp.big{padding:16px;font-size:14px}
+.filter .go.lg{flex:0 0 170px;font-size:15px;font-weight:700}
+body.sp .filter .go.lg{flex:0 0 100%}
+.filter .hint{font-size:11px;color:#666;margin-top:8px}
+.filter .fsub{margin-top:20px;padding-top:18px;border-top:1px solid #c9c9c9}
+
+/* カテゴリカード */
+.catcard{border:1px solid var(--line)}
+.catcard .ph{height:130px;border:0;border-bottom:1px dashed var(--line-strong)}
+.catcard .nm{padding:11px 10px;font-size:12.5px;font-weight:700;text-align:center;line-height:1.4}
+.catcard .cnt{font-size:10.5px;color:var(--ink-lt);font-weight:400;display:block;margin-top:3px}
+
+/* 製品カード */
+.pcard{border:1px solid var(--line)}
+.pcard .ph{height:150px;border:0;border-bottom:1px dashed var(--line-strong)}
+.pcard .body{padding:10px 11px 13px}
+.pcard .cat{font-size:10px;color:#fff;background:#8a8a8a;display:inline-block;padding:1px 8px;border-radius:2px}
+.pcard .nm{font-size:11.5px;line-height:1.5;margin:7px 0 5px;min-height:34px}
+.pcard .cd{font-size:12.5px;font-weight:700;letter-spacing:.03em;color:#3c3c3c}
+.icons{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.icons b{
+  width:32px;height:32px;border:1px solid var(--line-strong);background:var(--box3);
+  font-size:8.5px;font-weight:400;color:#777;display:flex;align-items:center;justify-content:center;
+  text-align:center;line-height:1.15;letter-spacing:-.02em;
+}
+
+/* 製品詳細 */
+.ptitle{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:34px}
+.ptitle .cd{font-size:19px;font-weight:700;letter-spacing:.03em;color:#2f2f2f}
+.ptitle .nm{font-size:19px;font-weight:700;margin-left:14px}
+body.sp .ptitle .cd,body.sp .ptitle .nm{font-size:15px;display:block;margin-left:0}
+.h3{
+  font-size:16px;font-weight:700;color:#3c3c3c;letter-spacing:.06em;
+  border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:20px;
+}
+.picons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+.picons .ph{width:74px;height:74px;padding:4px;font-size:9.5px;line-height:1.25}
+.picons .ph span{padding:1px 3px;background:rgba(255,255,255,.8)}
+body.sp .picons{gap:7px}
+body.sp .picons .ph{width:58px;height:58px;font-size:8.5px}
+.spec{width:100%;border-collapse:collapse;font-size:12.5px}
+.spec th,.spec td{padding:9px 14px;text-align:left;vertical-align:top;font-weight:400}
+.spec th{width:210px;color:#555;font-weight:700}
+.spec tr:nth-child(odd){background:#f4f4f4}
+body.sp .spec th{width:110px}
+body.sp .spec th,body.sp .spec td{padding:7px 8px;font-size:11.5px}
+.dlrow{
+  display:flex;align-items:center;gap:14px;border:1px solid var(--line);
+  padding:13px 16px;margin-bottom:10px;background:#fff;
+}
+.dlrow .t{flex:1;font-size:12.5px}
+.dlrow .t em{font-style:normal;padding:1em;font-size:10.5px;color:var(--ink-lt);margin-top:2px}
+.dlrow .b{
+  flex:0 0 132px;background:#5c5c5c;color:#fff;text-align:center;
+  padding:8px 0;font-size:11.5px;
+}
+body.sp .dlrow{flex-wrap:wrap;gap:9px}
+body.sp .dlrow .b{flex:0 0 100%}
+
+/* ダウンロードページ */
+.lead{font-size:13px;line-height:2;margin-bottom:12px}
+.caution{list-style:none}
+.caution li{font-size:12px;padding:3px 0 3px 1.1em;text-indent:-1.1em;color:#555}
+.selbar{display:flex;gap:14px;align-items:flex-end}
+body.sp .selbar{flex-wrap:wrap;gap:10px}
+.selbar .f{flex:1}
+body.sp .selbar .f{flex:0 0 100%}
+.selbar .f .cap{font-size:11.5px;font-weight:700;margin-bottom:6px;display:block}
+.result{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-bottom:2px solid #6f6f6f;padding-bottom:9px;margin-bottom:16px;
+}
+.result .now{font-size:14px;font-weight:700}
+.result .cnt{font-size:11.5px;color:var(--ink-lt)}
+.dlrow .cd{flex:0 0 168px;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#3c3c3c}
+body.sp .dlrow .cd{flex:0 0 100%}
+.telbox{border:1px solid var(--line);padding:20px 24px;background:var(--box3);font-size:12.5px}
+.telbox b{font-size:17px;letter-spacing:.02em;color:#3c3c3c}
+
+/* フォーム */
+.frow{display:flex;gap:16px;align-items:flex-start;border-bottom:1px solid #ececec;padding:15px 0}
+.frow:first-of-type{border-top:1px solid #ececec}
+.frow .lb{flex:0 0 190px;font-size:12.5px;font-weight:700;padding-top:10px}
+.frow .lb i{font-style:normal;color:#c0392b;margin-left:5px}
+.frow .fd{flex:1}
+.frow .fd .hint{font-size:10.5px;color:var(--ink-lt);margin-top:5px;display:block}
+body.sp .frow{flex-wrap:wrap;gap:6px;padding:12px 0}
+body.sp .frow .lb{flex:0 0 100%;padding-top:0}
+body.sp .frow .fd{flex:0 0 100%}
+.inp.ta{height:120px}
+.inp.sm{max-width:220px}
+.zip{display:flex;gap:10px;align-items:stretch}
+.zip .inp{max-width:190px}
+.zip .zb{
+  border:1px solid var(--line-strong);background:var(--box2);
+  padding:0 16px;display:flex;align-items:center;font-size:11.5px;white-space:nowrap;
+}
+.agree{
+  border:1px solid var(--line);background:var(--box3);text-align:center;
+  padding:20px;margin-top:30px;font-size:12.5px;
+}
+.agree .cb{
+  display:inline-block;width:15px;height:15px;border:1px solid var(--line-strong);
+  background:#fff;vertical-align:-3px;margin-right:8px;
+}
+
+/* ページャー */
+.pager{display:flex;gap:6px;justify-content:center;margin-top:34px}
+.pager span{
+  min-width:32px;height:32px;border:1px solid var(--line-strong);background:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:12px;padding:0 8px;
+}
+.pager span.on{background:#5c5c5c;color:#fff;border-color:#5c5c5c}
+
+/* フッター */
+.ft{background:var(--box3);border-top:1px solid var(--line);padding:44px 0 0}
+.ftnav{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+body.sp .ftnav{grid-template-columns:1fr 1fr}
+.ftnav h4{font-size:12.5px;border-bottom:1px solid var(--line);padding-bottom:7px;margin-bottom:10px;font-weight:700}
+.ftnav a{display:block;font-size:11.5px;color:#666;padding:3px 0;text-decoration:none}
+.ftbtm{border-top:1px solid var(--line);margin-top:36px;padding:22px 0;text-align:center;font-size:11px;color:var(--ink-lt)}
+.ftbtm .cpy{margin-top:12px;font-size:10.5px}
+
+/* ---------- 印刷（打合せ用・書き込み欄つき） ----------
+   A4横。ツールバーの「注釈を表示」で2通りに刷り分かる。
+     ON  … 注釈つき。各注釈の下に3行の書き込み欄
+     OFF … 注釈なし。右の列がまるごと書き込み欄
+   番号（①②③…）は注釈のON/OFFに関わらず必ず出す。 */
+@media print{
+  @page{size:A4 landscape;margin:8mm}
+
+  /* 背景色・地色を紙に出す（印刷ダイアログの「背景のグラフィック」もON） */
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+
+  body{background:#fff}
+
+  /* ツールバーは見出しだけ残す（1枚目の上部に出る） */
+  .toolbar{
+    position:static;background:#fff;color:#000;box-shadow:none;display:block;
+    padding:0 0 5px;margin-bottom:9px;border-bottom:1px solid #999;
+  }
+  .toolbar .pagenav,.toolbar .tgroup,.toolbar .chk,.toolbar .sp{display:none !important}
+  .toolbar .ttl{font-size:12px;letter-spacing:0}
+  .toolbar .ttl small{display:inline;margin-left:10px;opacity:1}
+
+  .drawer{display:none !important}
+
+  /* 用紙に収める。左の番号と右の書き込み欄が切れないよう幅を確保する
+     （34px＝番号の逃がし ＋ 1000px＝ワイヤー ＋ 24px＝間隔 ＋ 320px＝書き込み欄） */
+  .stage{padding:0}
+  .canvas{zoom:.76 !important;width:1390px !important;padding-left:34px;margin:0}
+  body.sp .canvas{zoom:1 !important;width:764px !important}
+
+  /* 打合せの参照用なので番号は常に出す */
+  .num{display:flex !important}
+
+  /* ブロックの途中でページが変わらないようにする */
+  .sec{break-inside:avoid;page-break-inside:avoid}
+
+  /* 右の列がまるごと書き込み欄になる */
+  .sec::after{
+    content:"";position:absolute;left:calc(100% + 24px);top:8px;
+    width:320px;height:calc(100% - 16px);min-height:96px;
+    border:1px solid #c9c9c9;
+    background:repeating-linear-gradient(to bottom,transparent 0 25px,#e3e3e3 25px 25.6px);
+  }
+}
