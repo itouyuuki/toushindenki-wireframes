@@ -332,6 +332,46 @@ body.sp .ftnav{grid-template-columns:1fr 1fr}
 .ftbtm{border-top:1px solid var(--line);margin-top:36px;padding:22px 0;text-align:center;font-size:11px;color:var(--ink-lt)}
 .ftbtm .cpy{margin-top:12px;font-size:10.5px}
 
+/* ---------- 編集区分の色分け ----------
+   fix  = 固定（デザイン・レイアウト。お客様は変更できない）
+   auto = 自動表示（お客様が管理画面で登録した内容が出る）
+   edit = 自由編集（WordPressの本文。★1ページに1箇所しか作れない）
+   白黒印刷でも判別できるよう、色だけでなくラベル文字を必ず出す。 */
+.legend{
+  border:1px solid #cfcfcf;background:#fff;padding:12px 16px;margin-bottom:22px;
+  font-size:11.5px;line-height:1.7;
+}
+.legend .ltitle{font-weight:700;font-size:12px;margin-bottom:6px;letter-spacing:.08em}
+.legend .litem{display:flex;align-items:baseline;gap:8px}
+.legend .litem i{
+  width:11px;height:11px;flex:none;border:1px solid #999;position:relative;top:1px;
+}
+.legend .litem b{font-weight:700;min-width:104px}
+.legend .k-fix{background:#eceff1;border-color:#b0bec5 !important}
+.legend .k-auto{background:#e3f2fd;border-color:#64b5f6 !important}
+.legend .k-edit{background:#fff3e0;border-color:#ffa726 !important}
+
+/* セクションの地色・縦バーは付けない（本文が読みにくくなるため）。
+   右上のラベルだけで区分を示す。 */
+
+/* 右上のラベルチップ。文言は「変えられるかどうか」が直接読める言い方にする */
+.sec[data-area]::after{
+  position:absolute;top:6px;right:6px;z-index:5;
+  font-size:9.5px;font-weight:700;letter-spacing:.06em;
+  padding:3px 9px;border:1px solid;white-space:nowrap;
+}
+.sec[data-area="fix"]::after{
+  content:"変更できません";background:#eceff1;border-color:#b0bec5;color:#607d8b;
+}
+.sec[data-area="auto"]::after{
+  content:"登録して変更できます";background:#e3f2fd;border-color:#64b5f6;color:#1565c0;
+}
+.sec[data-area="edit"]::after{
+  content:"自由に記入できます";background:#fff3e0;border-color:#ffa726;color:#e65100;
+}
+/* セクション個別に文言を差し替えたいときは data-label を付ける。色は data-area のまま */
+.sec[data-label]::after{content:attr(data-label)}
+
 /* ---------- 印刷（打合せ用・書き込み欄つき） ----------
    A4横。ツールバーの「注釈を表示」で2通りに刷り分かる。
      ON  … 注釈つき。各注釈の下に3行の書き込み欄
