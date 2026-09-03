@@ -337,22 +337,8 @@ body.sp .ftnav{grid-template-columns:1fr 1fr}
    auto = 自動表示（お客様が管理画面で登録した内容が出る）
    edit = 自由編集（WordPressの本文。★1ページに1箇所しか作れない）
    白黒印刷でも判別できるよう、色だけでなくラベル文字を必ず出す。 */
-.legend{
-  border:1px solid #cfcfcf;background:#fff;padding:12px 16px;margin-bottom:22px;
-  font-size:11.5px;line-height:1.7;
-}
-.legend .ltitle{font-weight:700;font-size:12px;margin-bottom:6px;letter-spacing:.08em}
-.legend .litem{display:flex;align-items:baseline;gap:8px}
-.legend .litem i{
-  width:11px;height:11px;flex:none;border:1px solid #999;position:relative;top:1px;
-}
-.legend .litem b{font-weight:700;min-width:104px}
-.legend .k-fix{background:#eceff1;border-color:#b0bec5 !important}
-.legend .k-auto{background:#e3f2fd;border-color:#64b5f6 !important}
-.legend .k-edit{background:#fff3e0;border-color:#ffa726 !important}
-
 /* セクションの地色・縦バーは付けない（本文が読みにくくなるため）。
-   右上のラベルだけで区分を示す。 */
+   右上のラベルだけで区分を示す。凡例は付けない（2026-08-18 に削除）。 */
 
 /* 右上のラベルチップ。文言は「変えられるかどうか」が直接読める言い方にする */
 .sec[data-area]::after{

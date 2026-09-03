@@ -48,25 +48,6 @@
 
   }
 
-  /* ---------- 編集区分の凡例（全ページ共通で自動生成） ---------- */
-  function buildLegend(){
-    var wire=document.querySelector('.wire');
-    if(!wire||document.querySelector('.legend'))return;
-    var l=document.createElement('div');
-    l.className='legend';
-    l.innerHTML=
-      '<div class="ltitle">この色は「御社で変更できるかどうか」を表しています</div>'+
-      '<div class="litem"><i class="k-fix"></i><b>変更できません</b>'+
-        'デザイン・レイアウト・共通部分です。変更はご依頼ください</div>'+
-      '<div class="litem"><i class="k-auto"></i><b>登録して変更</b>'+
-        '管理画面から登録・修正した内容が、そのままここに表示されます'+
-        '（製品名・型番・特徴・写真・お知らせなど）</div>'+
-      '<div class="litem"><i class="k-edit"></i><b>自由に記入</b>'+
-        '文章を自由に書ける欄です。WordPress の仕様上、'+
-        '<b style="min-width:0">1ページに1箇所だけ</b>しか設けられません</div>';
-    wire.insertBefore(l,wire.firstChild);
-  }
-
   /* 画面幅が足りないときは全体を縮小して横スクロールを出さない */
   function refresh(){
     if(!canvas)return;
@@ -80,7 +61,6 @@
   if(sp)sp.onclick=function(){b.classList.add('sp');sp.classList.add('on');pc.classList.remove('on');window.scrollTo(0,0);refresh();};
 
   buildDrawer();
-  buildLegend();
   window.addEventListener('load',refresh);
   window.addEventListener('resize',refresh);
   refresh();
