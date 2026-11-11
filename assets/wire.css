@@ -161,6 +161,9 @@ body.sp .drawer.open{display:block}
   display:flex;align-items:center;justify-content:center;min-height:42px;
 }
 .catbar div:nth-child(4n){border-right:0}
+/* 3項目のとき（会社案内のページ内リンク） */
+.catbar.c3 div{flex-basis:33.3333%}
+.catbar.c3 div:nth-child(3n){border-right:0}
 body.sp .catbar div{flex:0 0 50%;border-right:1px solid var(--line);font-size:10.5px}
 body.sp .catbar div:nth-child(2n){border-right:0}
 
