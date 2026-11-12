@@ -1,0 +1,105 @@
+/* A案 ホワイト：白と余白。色はロゴの青を1色だけ、要所に */
+:root{--jp:"Noto Sans JP",sans-serif;--en:"Jost",sans-serif;--ink:#1c2733;--sub:#647281;--line:#e2e7ec;--soft:#f4f6f8;--ac:#0079c4}
+
+.hd{border-bottom:1px solid var(--line)}
+.hd-in{height:84px;max-width:1280px;margin:0 auto;padding:0 40px}
+.gnav{gap:38px;font-size:15px;color:var(--sub)}
+.gnav .cur{color:var(--ink);font-weight:700}
+.tel{margin-left:44px;padding-left:32px;border-left:1px solid var(--line);line-height:1.25}
+.tel span{font-size:11px;color:var(--sub);letter-spacing:.08em}
+.tel b{font:500 24px var(--en);letter-spacing:.04em}
+
+.catbar{border-bottom:1px solid var(--line)}
+.catbar a{height:50px;font-size:13px;color:var(--sub)}
+.catbar a+a{border-left:1px solid var(--line)}
+
+.hero{background:linear-gradient(180deg,#f7f9fa 0%,#e7ecf0 100%)}
+.hero-in{max-width:1200px;margin:0 auto;height:540px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 40px}
+.hero-img{display:flex;align-items:center;justify-content:center}
+.hero-img img{width:300px}
+.hero-img .h2{width:400px;margin:0 -10px}
+.hero-txt{order:2;text-align:center;margin-top:4px}
+.hero-txt .en{font:500 13px var(--en);letter-spacing:.34em;color:var(--ac)}
+.hero-txt .en br{display:none}
+.hero-txt .jp{font-size:28px;font-weight:500;letter-spacing:.14em;margin-top:6px}
+
+.sec{padding:104px 0}
+.sh{text-align:center;margin-bottom:56px}
+.sh .en,.about .en,.cta .en,.contact .en{font:500 13px var(--en);letter-spacing:.32em;color:var(--ac)}
+.sh h2{font-size:28px;font-weight:500;letter-spacing:.1em;line-height:1.5;margin-top:6px}
+
+.tgrid{gap:40px}
+.tcard .ph{background:var(--soft)}
+.tcard .tx{padding-top:20px}
+.meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--sub)}
+.new{font:500 11px var(--en);letter-spacing:.14em;color:#fff;background:var(--ac);padding:2px 9px}
+.nm{font-size:15px;font-weight:500;line-height:1.7;margin-top:10px}
+.cd{font:400 14px var(--en);letter-spacing:.06em;color:var(--sub);margin-top:6px}
+
+.info{padding-top:0}
+.news{max-width:860px;margin:0 auto;border-top:1px solid var(--line)}
+.news a{gap:40px;padding:24px 8px;border-bottom:1px solid var(--line)}
+.news time{font:400 14px var(--en);letter-spacing:.08em;color:var(--sub)}
+.more{text-align:center;margin-top:48px}
+
+.btn{min-width:280px;padding:16px 32px;font-size:14px;letter-spacing:.06em;border:1px solid var(--ink)}
+.btn.fill{background:var(--ac);border-color:var(--ac);color:#fff}
+.btn.sub{border:0;padding:0;min-width:0;color:var(--ac);font-size:13px}
+
+.catalog{background:var(--soft)}
+.cat-box{justify-content:center;gap:64px}
+.cover{background:#fff;box-shadow:0 18px 40px -18px rgba(28,39,51,.35);border-top:6px solid var(--ac)}
+.cv-y{font:500 34px var(--en);color:var(--ac)}
+.cv-t{font-size:15px;font-weight:700;letter-spacing:.1em}
+.cv-e{font:400 8px var(--en);letter-spacing:.2em;color:var(--sub);margin-top:8px}
+.cv-c{font-size:9px;color:var(--sub)}
+.cat-tx{gap:20px}
+.ct{font-size:20px;font-weight:500;letter-spacing:.06em}
+
+.cta-grid{gap:40px}
+.cta-card{align-items:center;min-height:220px;background:var(--soft);padding:0 44px 0 12px}
+.cta-card.c2{padding-left:56px}
+.cta-card .ph{width:240px;flex:none}
+.cta-card b{font-size:21px;font-weight:500;letter-spacing:.06em;line-height:1.6;margin:6px 0 16px}
+.go{font-size:13px;color:var(--ac)}
+
+.about{padding-top:0}
+.about-grid{gap:72px}
+.bld{background:var(--soft);color:#9aa6b1}
+.about h2{font-size:26px;font-weight:500;letter-spacing:.08em;line-height:1.6;margin:8px 0 26px}
+.about .tx p:not(.en){font-size:14px;line-height:2.05;color:#3b4855;margin-bottom:14px}
+.about .btn{margin-top:20px}
+
+.contact{background:var(--ink);color:#fff;padding:84px 0;text-align:center}
+.contact .en{color:#7cc4ee}
+.contact h2{font-size:26px;font-weight:500;letter-spacing:.14em;margin-top:6px}
+.lead{font-size:13px;opacity:.75;margin:10px 0 30px}
+.contact .btn{background:#fff;border-color:#fff;color:var(--ink);min-width:320px}
+.tl{margin-top:26px;font-size:13px;letter-spacing:.06em}
+.tl b{font:500 26px var(--en);letter-spacing:.05em;margin:0 6px}
+.tl small{font-size:12px;opacity:.75}
+
+.ft{padding:80px 0 40px}
+.ft-nav{gap:40px;padding-bottom:56px;border-bottom:1px solid var(--line)}
+.ft-nav h4{font-size:14px;font-weight:700;margin-bottom:14px}
+.ft-nav a{font-size:13px;color:var(--sub);line-height:2.2}
+.ft-btm{text-align:center;padding-top:48px;font-size:12px;color:var(--sub);line-height:2}
+.ft-logo img{margin:0 auto 20px}
+.ft-ln{margin-top:14px}
+.cpy{font:400 11px var(--en);letter-spacing:.08em;margin-top:22px;opacity:.8}
+
+@media (max-width:820px){
+  .hd-in{height:60px;padding:0 20px}
+  .hero-in{height:auto;padding:36px 20px 40px}
+  .hero-img img{width:30%}.hero-img .h2{width:44%}
+  .hero-txt .jp{font-size:19px}
+  .sec{padding:64px 0}.info,.about{padding-top:0}
+  .sh{margin-bottom:32px}.sh h2{font-size:21px}
+  .tgrid{gap:36px}
+  .news a{gap:2px;padding:16px 4px}
+  .cat-box{gap:32px}.cat-tx{align-items:center;text-align:center}
+  .cta-grid{gap:16px}.cta-card{min-height:150px;padding:0 20px 0 4px}.cta-card.c2{padding-left:28px}.cta-card .ph{width:130px}.cta-card b{font-size:17px}
+  .about-grid{gap:28px}.about h2{font-size:21px}
+  .contact{padding:56px 0}.contact .btn{min-width:0}
+  .ft{padding:48px 0 32px}.ft-nav{gap:28px 20px}
+}

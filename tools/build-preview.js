@@ -47,6 +47,30 @@ for (const p of PAGES) {
 fs.cpSync(path.join(root, 'assets'), path.join(out, 'assets'), { recursive: true });
 fs.cpSync(path.join(root, 'pdf'), path.join(out, 'pdf'), { recursive: true });
 
+// デザイン案：design/top.html（切替バー付き）から、案ごとの単独ページ design/a.html・b.html・c.html を作る。
+// 先方には案ごとに別の URL を送るので、切替バーと切替スクリプトは外し、CSS を固定で読み込む
+const designSrc = path.join(root, 'design', 'top.html');
+const DESIGNS = { a: 'A案', b: 'B案', c: 'C案' };
+if (fs.existsSync(designSrc)) {
+  const src = fs.readFileSync(designSrc, 'utf8');
+  fs.mkdirSync(path.join(out, 'design'), { recursive: true });
+  fs.cpSync(path.join(root, 'design', 'css'), path.join(out, 'design', 'css'), { recursive: true });
+  for (const [d, label] of Object.entries(DESIGNS)) {
+    const html = src
+      .replace(/<!-- 案の切り替えバー[\s\S]*?<div class="dbar">[\s\S]*?<\/div>\s*/, '')
+      .replace(/<script>[\s\S]*?<\/script>\s*/, '')
+      .replace('href="css/a.css" id="theme"', `href="css/${d}.css"`)
+      .replace('data-d="a"', `data-d="${d}"`)
+      .replace(/<title>.*?<\/title>/, `<title>東進電機工業様｜トップページ デザイン ${label}</title>`);
+    if (/dbar|<script>|id="theme"/.test(html)) throw new Error(`design/${d}.html の書き出しに失敗（切替バーが残っています）`);
+    fs.writeFileSync(path.join(out, 'design', d + '.html'), html);
+  }
+  // design/ は dev.nextreservation.jp にも単独で上げる（~/bin/nr-dev-upload dist/<フォルダ名>/design toushindenki-design --go）。
+  // そちらは Basic 認証がないので、検索エンジンに出さない指定だけはフォルダ単体でも効くようにしておく
+  fs.writeFileSync(path.join(out, 'design', '.htaccess'),
+    'Header set Cache-control no-cache\nHeader set X-Robots-Tag "noindex, nofollow"\n');
+}
+
 fs.writeFileSync(path.join(out, '.htaccess'), [
   '# キャッシュを毎回確認するようにする',
   'Header set Cache-control no-cache',
