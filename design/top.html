@@ -19,6 +19,14 @@
   <a href="#a" data-d="a">A案　ホワイト</a>
   <a href="#b" data-d="b">B案　ネイビー</a>
   <a href="#c" data-d="c">C案　ブラック</a>
+  <a href="#d" data-d="d">D案　ブラック（方眼）</a>
+  <!-- メインビジュアルの見せ方の見比べ（D案のときだけ出る。社内確認用。先方に送る単独ページには入らず、「現在」の形で出る） -->
+  <span class="dbar-v">メインビジュアル
+    <button type="button" data-fv="0">現在</button>
+    <button type="button" data-fv="1">1　斜めの切り替え</button>
+    <button type="button" data-fv="2">2　ファインダー枠</button>
+    <button type="button" data-fv="3">3　白黒反転の大見出し</button>
+  </span>
   <span class="dbar-n">※製品写真は現行サイトのものを仮配置</span>
 </div>
 
@@ -191,12 +199,21 @@
   if(/shot/.test(location.search)) document.querySelector(".dbar").style.display="none";
   var link=document.getElementById('theme'),btns=document.querySelectorAll('.dbar a');
   function set(){
-    var d=(location.hash||'#a').slice(1); if(!/^[abc]$/.test(d)) d='a';
+    var d=(location.hash||'#a').slice(1); if(!/^[abcd]$/.test(d)) d='a';
     link.href='css/'+d+'.css'; document.documentElement.dataset.d=d;
     btns.forEach(function(b){b.classList.toggle('on',b.dataset.d===d)});
+    vbox.style.display=d==='d'?'':'none';
     window.scrollTo(0,0);
-
   }
+  /* メインビジュアルの見比べ：<html data-fv="1〜3"> を切り替える（見た目は d.css。「現在」は指定なし）。押すとページの先頭に戻る。
+     撮影用に ?shot&fv=2 でも指定できる */
+  var vbox=document.querySelector('.dbar-v'),vb=vbox.querySelectorAll('button');
+  function fv(n){
+    if(n==='0') delete document.documentElement.dataset.fv; else document.documentElement.dataset.fv=n;
+    vb.forEach(function(b){b.classList.toggle('on',b.dataset.fv===n)});
+  }
+  vb.forEach(function(b){b.addEventListener('click',function(){fv(b.dataset.fv);window.scrollTo(0,0);});});
+  fv((location.search.match(/fv=([123])/)||[0,'0'])[1]);
   window.addEventListener("hashchange",set); set();
   /* 撮影用：?shot で切替バーを隠す。&y=2000 でその位置から下を撮る */
   var y=(location.search.match(/y=(\d+)/)||[])[1];

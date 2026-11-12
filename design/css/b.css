@@ -112,7 +112,7 @@
   .news a{gap:2px;padding:14px 2px}
   .cat-box{padding:24px 20px;gap:24px}
   .cta-card{min-height:160px;padding:24px 20px;gap:16px;justify-content:flex-start}.cta-card.c1{border-right:0}.cta-card.c1 .ph{width:120px}.cta-card b{font-size:18px}
-  .about-grid{gap:24px}.about h2{font-size:20px}
+  .about-grid{grid-template-columns:1fr;gap:24px}.about h2{font-size:20px}
   .contact{padding:44px 0}.contact .in,.ct-r{flex-direction:column;align-items:stretch;gap:24px}.contact .btn{min-width:0}
   .ft-nav>div{padding:18px 16px}.ft-nav>div:nth-child(3){border-left:0}.ft-nav>div:nth-child(n+3){border-top:1px solid var(--line)}
   .ft-btm{grid-template-columns:1fr}.ft-logo{grid-row:auto}

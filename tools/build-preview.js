@@ -47,10 +47,10 @@ for (const p of PAGES) {
 fs.cpSync(path.join(root, 'assets'), path.join(out, 'assets'), { recursive: true });
 fs.cpSync(path.join(root, 'pdf'), path.join(out, 'pdf'), { recursive: true });
 
-// デザイン案：design/top.html（切替バー付き）から、案ごとの単独ページ design/a.html・b.html・c.html を作る。
+// デザイン案：design/top.html（切替バー付き）から、案ごとの単独ページ design/a.html・b.html・c.html・d.html を作る。
 // 先方には案ごとに別の URL を送るので、切替バーと切替スクリプトは外し、CSS を固定で読み込む
 const designSrc = path.join(root, 'design', 'top.html');
-const DESIGNS = { a: 'A案', b: 'B案', c: 'C案' };
+const DESIGNS = { a: 'A案', b: 'B案', c: 'C案', d: 'D案' };
 if (fs.existsSync(designSrc)) {
   const src = fs.readFileSync(designSrc, 'utf8');
   fs.mkdirSync(path.join(out, 'design'), { recursive: true });
